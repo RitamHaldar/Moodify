@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwttoken = require("jsonwebtoken");
 const usermodel = require ("../models/user.model");
+const redis = require("../config/cache");
 
 async function registeruserconroller(req,res) {
     const {username , email , password } = req.body;
@@ -70,8 +71,32 @@ async function loginusercontroller(req,res){
     })
 
 }
+async function getmecontroller(req,res){
+    const user = usermodel.findById(req.user.id).select("-password");
+    if(!user){
+        return res.status(404).json({
+            message:"User not found"
+        })
+    }
+    res.status(200).json({
+        message:"User fetched succesdsfully",
+        user
+    })
+}
+async function logoutusercontroller(req,res){
+    const user = req.user.username;
+    const token = req.cookies.token;
 
+    res.clearCookie("token");
+    await redis.set(token, Date.now.toString(),"EX",60*60);
+    res.status(200).json({
+        message:"User logged out successfully"
+    })
+
+}
 module.exports = {
     registeruserconroller,
-    loginusercontroller
+    loginusercontroller,
+    logoutusercontroller,
+    getmecontroller
 }

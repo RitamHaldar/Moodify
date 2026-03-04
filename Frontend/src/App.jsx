@@ -1,4 +1,4 @@
-import FaceExpression from "./features/Components/FacialExpression"
+import FaceExpression from "./features/Facial/Components/FacialExpression"
 
 
 function App() {
