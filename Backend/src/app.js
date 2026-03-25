@@ -6,11 +6,12 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors({
-    withCredentials:true,
-    origin:"http://localhost:5173"
+    credentials: true,
+    origin: "https://moodsync-ectw.onrender.com"
 }))
 app.use(cookieParser());
 app.use(express.json());
-app.use("/api/auth",authrouter);
-app.use("/api/songs",songroute);
+app.use("/api/auth", authrouter);
+app.use("/api/songs", songroute);
+app.use(express.static("./Public"))
 module.exports = app;

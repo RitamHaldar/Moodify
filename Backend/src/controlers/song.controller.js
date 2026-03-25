@@ -33,10 +33,10 @@ async function createsonghandler(req, res) {
 
 async function getsongcontroller(req, res) {
     const { mood } = req.query;
-    const song = await songmodel.findOne({ mood });
+    const songs = await songmodel.find({ mood });
     res.status(200).json({
         message: "Song fetched successfully",
-        song
+        songs
     })
 }
 module.exports = {

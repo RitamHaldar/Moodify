@@ -1,10 +1,15 @@
-import FaceExpression from "./features/Facial/Components/FacialExpression"
-
+import { RouterProvider } from 'react-router';
+import { router } from './app.routes';
+import SongProvider from './features/Songs/song.context';
+import AuthProvider from './features/Auth/auth.context';
 
 function App() {
-
   return (
-    <FaceExpression />
+    <AuthProvider>
+      <SongProvider>
+        <RouterProvider router={router} />
+      </SongProvider>
+    </AuthProvider>
   )
 }
 
