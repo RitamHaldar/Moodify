@@ -1,6 +1,6 @@
 # MoodSync - Mood-Powered Music Experience
 
-**Live Demo**: [https://moodsync-ectw.onrender.com](https://moodsync-ectw.onrender.com)
+**Live Demo**: [Link](https://moodsync-ectw.onrender.com)
 
 MoodSync is a premium, AI-driven music recommendation application that uses facial expression detection to curate the perfect playlist based on your current emotional state. Built with the MERN stack, it offers a sophisticated, responsive, and ethereal user experience.
 
