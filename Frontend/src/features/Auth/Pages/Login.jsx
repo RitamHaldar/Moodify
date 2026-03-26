@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import '../Styles/Login.scss'
 import { useAuth } from "../Hooks/useAuth"
-import { Mail, Lock, ArrowRight } from 'lucide-react'
+import { Mail, Lock, ArrowRight, Music2 } from 'lucide-react'
 
 const Login = () => {
     const { handleLogin } = useAuth()
@@ -28,37 +27,37 @@ const Login = () => {
     }
 
     return (
-        <div className="login-page">
-            <div className="aurora-bg">
-                <div className="aurora aurora-1"></div>
-                <div className="aurora aurora-2"></div>
-                <div className="aurora aurora-3"></div>
-                <div className="noise-overlay"></div>
-            </div>
+        <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center p-6 font-['Inter'] antialiased text-[#1A163A] overflow-hidden relative">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/30 blur-[120px] rounded-full animate-pulse"></div>
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-100/30 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-            <div className="login-container fade-in-up">
-                <div className="login-header">
-                    <h1 className="logo-text">
-                        Mood<span className="gradient-text gradient-animated">Sync</span>
+            <div className="w-full max-w-[440px] z-10">
+                <div className="text-center mb-10 animate-[slideDown_0.8s_ease-out]">
+                    <div className="inline-flex items-center justify-center w-14 h-14 bg-[#3B82F6] rounded-[18px] text-white shadow-xl shadow-blue-100 mb-6 animate-[float_4s_ease-in-out_infinite]">
+                        <Music2 strokeWidth={3} className="w-[28px] h-[28px]" />
+                    </div>
+                    <h1 className="text-[32px] font-black tracking-tighter mb-2">
+                        MoodSync
                     </h1>
-                    <p className="subtitle">Tune into your personal atmosphere</p>
+                    <p className="text-[14px] font-medium text-slate-400">Welcome back to your personal atmosphere</p>
                 </div>
 
-                <div className="login-card outline-glass-heavy">
-                    <div className="card-header">
-                        <h2>Welcome Back</h2>
-                        <p>Enter your credentials to continue your journey</p>
+                <div className="bg-white/70 backdrop-blur-2xl rounded-[32px] p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white animate-[slideUp_0.8s_ease-out_both] delay-100">
+                    <div className="mb-8">
+                        <h2 className="text-[22px] font-black tracking-tight mb-1">Sign In</h2>
+                        <p className="text-[12px] font-bold text-slate-300 uppercase tracking-widest">Access your sonic journey</p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="login-form">
-                        <div className="form-group">
-                            <label>Email Address</label>
-                            <div className="input-group">
-                                <Mail size={18} className="input-icon" />
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="space-y-1.5">
+                            <label className="text-[11px] font-black text-slate-400 uppercase tracking-wider ml-1">Email Address</label>
+                            <div className="relative group">
+                                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#3B82F6] transition-colors" />
                                 <input
                                     type="email"
                                     name="email"
                                     placeholder="name@example.com"
+                                    className="w-full h-[56px] bg-slate-50/50 border border-slate-100 rounded-[18px] pl-12 pr-4 text-[14px] font-semibold outline-none focus:border-[#3B82F6]/30 focus:bg-white focus:ring-4 focus:ring-blue-50/50 transition-all"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
@@ -66,16 +65,15 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <div className="form-group">
-                            <div className="label-row">
-                                <label>Password</label>
-                            </div>
-                            <div className="input-group">
-                                <Lock size={18} className="input-icon" />
+                        <div className="space-y-1.5">
+                            <label className="text-[11px] font-black text-slate-400 uppercase tracking-wider ml-1">Password</label>
+                            <div className="relative group">
+                                <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#3B82F6] transition-colors" />
                                 <input
                                     type="password"
                                     name="password"
                                     placeholder="••••••••"
+                                    className="w-full h-[56px] bg-slate-50/50 border border-slate-100 rounded-[18px] pl-12 pr-4 text-[14px] font-semibold outline-none focus:border-[#3B82F6]/30 focus:bg-white focus:ring-4 focus:ring-blue-50/50 transition-all"
                                     value={formData.password}
                                     onChange={handleChange}
                                     required
@@ -83,20 +81,37 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="login-submit-btn">
+                        <button 
+                            type="submit" 
+                            className="w-full h-[56px] bg-gradient-to-tr from-[#1E1B4B] to-[#4338CA] text-white rounded-[18px] font-black text-[15px] shadow-lg shadow-indigo-100 hover:shadow-xl hover:shadow-indigo-200 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group"
+                        >
                             <span>Sign In</span>
-                            <ArrowRight size={18} />
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </form>
 
-                    <div className="card-footer">
-                        <p>Don't have an account? <Link to="/register" className="gradient-text">Create one now</Link></p>
+                    <div className="mt-10 pt-8 border-t border-slate-50 text-center text-[13px] font-semibold text-slate-400">
+                        Don't have an account? <Link to="/register" className="text-[#3B82F6] hover:underline underline-offset-4 decoration-2">Create one now</Link>
                     </div>
                 </div>
             </div>
+
+            <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes slideDown {
+                    from { transform: translateY(-30px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                @keyframes slideUp {
+                    from { transform: translateY(30px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
+            `}} />
         </div>
     )
 }
 
 export default Login
-
