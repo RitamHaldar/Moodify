@@ -105,6 +105,3 @@ The application follows a **Premium Ethereal** design system:
 - [ ] **Custom Playlists**: Allow users to create and save their own mood-based collections.
 - [ ] **AI Refinement**: Enhanced facial expression sensitivity and lighting adaptation.
 - [ ] **Dark/Light Mode**: User-selectable themes beyond the default dark mode.
-
----
-Developed by MoodSync Team for a better music listening experience.
