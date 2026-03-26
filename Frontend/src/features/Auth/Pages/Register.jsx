@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import '../Styles/Register.scss'
 import { useAuth } from '../Hooks/useAuth'
+import { User, Mail, Lock, ShieldCheck, ArrowRight } from 'lucide-react'
 
 const Register = () => {
     const { handleRegister } = useAuth();
@@ -32,98 +33,103 @@ const Register = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="header">
-                <h1>MoodSync</h1>
-                <p>Join the atmosphere</p>
+        <div className="register-page">
+            <div className="aurora-bg">
+                <div className="aurora aurora-1"></div>
+                <div className="aurora aurora-2"></div>
+                <div className="aurora aurora-3"></div>
+                <div className="noise-overlay"></div>
             </div>
 
-            <div className="register-card">
-                <h2>Create Account</h2>
-                <p className="subtitle">Please fill in your details to get started</p>
+            <div className="register-container fade-in-up">
+                <div className="register-header">
+                    <h1 className="logo-text">
+                        Mood<span className="gradient-text gradient-animated">Sync</span>
+                    </h1>
+                    <p className="subtitle">Start your personalized sonic journey</p>
+                </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <div className="input-wrapper">
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-                            </span>
-                            <input
-                                type="text"
-                                id="username"
-                                name="username"
-                                placeholder="Your username"
-                                value={formData.username}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
+                <div className="register-card outline-glass-heavy">
+                    <div className="card-header">
+                        <h2>Create Account</h2>
+                        <p>Join the future of emotion-driven music</p>
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
-                        <div className="input-wrapper">
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                            </span>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="name@example.com"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
+                    <form onSubmit={handleSubmit} className="register-form">
+                        <div className="form-group">
+                            <label>Username</label>
+                            <div className="input-group">
+                                <User size={18} className="input-icon" />
+                                <input
+                                    type="text"
+                                    name="username"
+                                    placeholder="Your username"
+                                    value={formData.username}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <div className="input-wrapper">
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                            </span>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="••••••••"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
+                        <div className="form-group">
+                            <label>Email Address</label>
+                            <div className="input-group">
+                                <Mail size={18} className="input-icon" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="name@example.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm Password</label>
-                        <div className="input-wrapper">
-                            <span className="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                            </span>
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                placeholder="••••••••"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                required
-                            />
+                        <div className="form-group">
+                            <label>Password</label>
+                            <div className="input-group">
+                                <Lock size={18} className="input-icon" />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="••••••••"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
                         </div>
+
+                        <div className="form-group">
+                            <label>Confirm Password</label>
+                            <div className="input-group">
+                                <ShieldCheck size={18} className="input-icon" />
+                                <input
+                                    type="password"
+                                    name="confirmPassword"
+                                    placeholder="••••••••"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <button type="submit" className="register-submit-btn">
+                            <span>Register Now</span>
+                            <ArrowRight size={18} />
+                        </button>
+                    </form>
+
+                    <div className="card-footer">
+                        <p>Already have an account? <Link to="/login" className="gradient-text">Sign in instead</Link></p>
                     </div>
-
-                    <button type="submit" className="register-button">Register</button>
-                </form>
-            </div>
-
-            <div className="footer-text">
-                Already have an account? <Link to="/login" className="login-link">Login</Link>
+                </div>
             </div>
         </div>
     )
 }
 
 export default Register
+

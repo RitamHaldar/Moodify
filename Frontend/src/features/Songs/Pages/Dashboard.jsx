@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Home, UploadCloud, LogOut, Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, Heart, ListVideo, Music, User, Smile, Frown, Meh, Zap } from 'lucide-react';
+import { Home, UploadCloud, LogOut, Play, Pause, SkipBack, SkipForward, Shuffle, Repeat, Volume2, User, Smile, Frown, Meh, Zap, Music } from 'lucide-react';
 import '../Styles/Dashboard.scss';
 import { useSong } from '../Hooks/useSong';
 import FacialExpression from '../Components/FacialExpression'
@@ -26,9 +26,7 @@ const Dashboard = () => {
     const [volume, setVolume] = useState(0.8);
     const [isShuffle, setIsShuffle] = useState(false);
     const [isRepeat, setIsRepeat] = useState(false);
-    const [isLiked, setIsLiked] = useState(false);
     const [activeNav, setActiveNav] = useState('Home');
-
     const audioRef = useRef(null);
 
     useEffect(() => {
@@ -95,6 +93,13 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
+            <div className="aurora-container">
+                <div className="aurora aurora-1"></div>
+                <div className="aurora aurora-2"></div>
+                <div className="aurora aurora-3"></div>
+                <div className="aurora aurora-4"></div>
+            </div>
+
             <audio
                 ref={audioRef}
                 onTimeUpdate={handleTimeUpdate}
@@ -104,10 +109,10 @@ const Dashboard = () => {
 
             <aside className="sidebar">
                 <div className="sidebar__brand">
-                    <div className="sidebar__brand-icon"><Music size={20} /></div>
+                    <div className="sidebar__brand-icon"><Music size={24} /></div>
                     <div>
                         <div className="sidebar__brand-name">MoodSync</div>
-                        <div className="sidebar__brand-tag">Tune into your atmosphere</div>
+                        <div className="sidebar__brand-tag">Deep Atmosphere Sync</div>
                     </div>
                 </div>
 
@@ -119,7 +124,7 @@ const Dashboard = () => {
                             onClick={() => setActiveNav(item.label)}
                         >
                             <span className="sidebar__nav-icon">{item.icon}</span>
-                            {item.label}
+                            <span>{item.label}</span>
                         </button>
                     ))}
                 </nav>
@@ -127,15 +132,16 @@ const Dashboard = () => {
 
             <main className="main">
                 <header className="topbar">
-                    <div className="topbar__right">
-                        <div className="topbar__user">
-                            <div className="topbar__user-info">
-                                <span className="topbar__user-name">{user}</span>
-                            </div>
-                            <div className="topbar__avatar"><User size={18} /></div>
+                    <div className="topbar__user glass-pill">
+                        <div className="topbar__avatar">
+                            <User size={18} />
                         </div>
-                        <button className="topbar__icon-btn" onClick={handleLogout}><LogOut size={18} /></button>
+                        <span className="topbar__user-name">{user || 'Vibe Explorer'}</span>
                     </div>
+                    <button className="glass-btn logout-btn extraordinary-glass" onClick={handleLogout} title="Logout">
+                        <LogOut size={18} />
+                        <span>Logout</span>
+                    </button>
                 </header>
 
                 <section className="atmosphere-hero">
@@ -168,10 +174,10 @@ const Dashboard = () => {
                 </section>
 
                 <section className="recent-sessions">
-                    <h2>Songs for you</h2>
+                    <h2>Experience your vibe</h2>
                     <div className="recent-sessions__list">
                         {loading ? (
-                            <div className="loading-state">Finding your rhythm...</div>
+                            <div className="loading-state">Syncing with your atmosphere...</div>
                         ) : songs.length > 0 ? (
                             songs.map((song, i) => (
                                 <div
@@ -180,16 +186,19 @@ const Dashboard = () => {
                                     onClick={() => playSong(song)}
                                 >
                                     <span className="session-row__num">{String(i + 1).padStart(2, '0')}</span>
-                                    <div className="session-row__art" style={{ backgroundImage: `url(${song.posterUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                                        {currentSong?.songUrl === song.songUrl && isPlaying ? <div className="playing-bars" /> : !song.posterUrl && <Music size={16} />}
+                                    <div className="session-row__art" style={{ backgroundImage: `url(${song.posterUrl})` }}>
+                                        {currentSong?.songUrl === song.songUrl && isPlaying ? <div className="playing-bars-glow" /> : !song.posterUrl}
                                     </div>
                                     <div className="session-row__info">
                                         <span className="session-row__title">{song.title}</span>
                                     </div>
+                                    <div className="session-row__actions">
+                                        <Play size={20} className="hover-play-icon" />
+                                    </div>
                                 </div>
                             ))
                         ) : (
-                            <div className="empty-state">No songs found. Try a different mood!</div>
+                            <div className="empty-state">No rhythms found in this atmosphere.</div>
                         )}
                     </div>
                 </section>
@@ -197,11 +206,10 @@ const Dashboard = () => {
 
             <footer className="player-bar">
                 <div className="player-bar__song">
-                    <div className="player-bar__art" style={{ backgroundImage: `url(${currentSong?.posterUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        {!currentSong?.posterUrl && <Music size={20} />}
+                    <div className={`player-bar__art ${isPlaying && currentSong ? 'playing' : ''}`} style={{ backgroundImage: `url(${currentSong?.posterUrl})` }}>
                     </div>
                     <div className="player-bar__meta">
-                        <span className="player-bar__title">{currentSong?.title || 'Select a song'}</span>
+                        <span className="player-bar__title">{currentSong?.title || 'Select a mood'}</span>
                     </div>
                 </div>
 
