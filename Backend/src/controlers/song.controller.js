@@ -13,7 +13,7 @@ async function createsonghandler(req, res) {
         ),
         user(
             req.file.buffer,
-            tag.title + "mp3",
+            tag.title + ".mp3",
             "cohort-2.0/moodify/songs"
         )
         ])

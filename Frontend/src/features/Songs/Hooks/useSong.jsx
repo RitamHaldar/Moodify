@@ -12,8 +12,10 @@ export const useSong = () => {
             setLoading(true);
             const response = await getSongsByMood(expression);
             setSongs(response.songs);
+            return response.songs;
         } catch (error) {
             console.error("Get songs failed:", error);
+            return [];
         } finally {
             setLoading(false);
         }

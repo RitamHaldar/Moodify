@@ -72,7 +72,7 @@ export default function FacialExpression({ onGetSongs }) {
   };
 
   return (
-    <div className="w-full h-full md:h-[320px] bg-white/40 backdrop-blur-xl rounded-[32px] md:rounded-[48px] p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-16 border border-white/60 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.03)] relative overflow-hidden animate-[slideUp_1s_ease-out]">
+    <div className="w-full min-h-[600px] md:min-h-0 md:h-[340px] bg-white/40 backdrop-blur-xl rounded-[32px] md:rounded-[48px] p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-16 border border-white/60 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.03)] relative overflow-hidden animate-[slideUp_1s_ease-out]">
       <video ref={videoRef} className="hidden" />
 
       <div className={`absolute top-0 right-0 w-64 h-64 ${mood.bg} blur-[100px] rounded-full opacity-50 -translate-y-1/2 translate-x-1/2 transition-colors duration-1000 animate-pulse`}></div>
@@ -121,7 +121,7 @@ export default function FacialExpression({ onGetSongs }) {
       <div className="relative group shrink-0 animate-[slideInRight_1s_ease-out]">
         <div className={`absolute -inset-10 ${mood.bg} rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-all duration-1000 ${isScanning ? 'opacity-80 scale-125' : ''}`}></div>
         
-        <div className={`relative w-[160px] h-[190px] md:w-[220px] md:h-[260px] ${mood.bg} rounded-[40px] md:rounded-[56px] overflow-hidden shadow-2xl border-[10px] border-white transition-all duration-[800ms] group-hover:rotate-2 group-hover:scale-[1.05] ring-1 ring-slate-100/50 flex flex-col items-center justify-center`}>
+        <div className={`relative w-[180px] h-[210px] md:w-[220px] md:h-[260px] ${mood.bg} rounded-[40px] md:rounded-[56px] overflow-hidden shadow-2xl border-[10px] border-white transition-all duration-[800ms] group-hover:rotate-2 group-hover:scale-[1.05] ring-1 ring-slate-100/50 flex flex-col items-center justify-center`}>
           
           <div className="absolute inset-0 opacity-20 pointer-events-none">
              {[1,2,3,4,5].map(i => (
@@ -129,7 +129,7 @@ export default function FacialExpression({ onGetSongs }) {
              ))}
           </div>
 
-          <Icon strokeWidth={2.5} className={`${mood.color} w-[64px] h-[64px] md:w-[90px] md:h-[90px] transition-all duration-700 ${isScanning ? 'scale-125 rotate-12 blur-[1px] animate-pulse' : 'scale-100 rotate-0 blur-0 animate-[float_4s_ease-in-out_infinite]'}`} />
+          <Icon strokeWidth={2.5} className={`${mood.color} w-[72px] h-[72px] md:w-[90px] md:h-[90px] transition-all duration-700 ${isScanning ? 'scale-125 rotate-12 blur-[1px] animate-pulse' : 'scale-100 rotate-0 blur-0 animate-[float_4s_ease-in-out_infinite]'}`} />
           
           <div className="absolute inset-0 z-10 pointer-events-none">
              <div className={`w-full h-1.5 bg-white/60 blur-[1px] absolute top-0 shadow-[0_0_20px_white] ${isScanning ? 'animate-[scanning-bar_2s_linear_infinite]' : 'translate-y-[-10px] opacity-0'}`}></div>
